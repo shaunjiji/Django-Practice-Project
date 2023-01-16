@@ -26,3 +26,6 @@ def add_recipe(request):
 def view(request):
     data = Recipedb.objects.all()
     return render(request, 'view_recipe.html', {'data': data})
+
+def admin_login(request):
+    return render(request,'login.html')
