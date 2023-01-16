@@ -101,7 +101,10 @@
                             <h5>
                                 Login Now
                             </h5>
-                            <form action="">
+                            <form action="{% url 'ad_login' %}"
+                                method="post"
+                                enctype="multipart/form-data">>
+                                {% csrf_token %}
                                 <div>
                                     <input type="text" placeholder="Username "
                                         name="username" />

@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
 from django.shortcuts import render
 from . models import *
 from django.core.files.storage import FileSystemStorage
@@ -29,3 +30,25 @@ def view(request):
 
 def admin_login(request):
     return render(request,'login.html')
+
+def ad_login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+            request.session['username_a'] = username
+            request.session['password_a'] = password
+            return redirect('login')
+        else:
+            return render(request,'admin_login.html', {'msg':'Sorry Invalid User Credentials'}) 
+    else:
+        return redirect('login')
+
+
+def ad_logout(request):
+    del request.session['username_a']
+    del request.session['password_a']
+
+
