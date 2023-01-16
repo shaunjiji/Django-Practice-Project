@@ -6,3 +6,6 @@ from django.shortcuts import render
 
 def index(request):
     return render(request,"adminindex.html")
+
+def view_add_recipe(request):
+    return render(request, "add_recipe.html")

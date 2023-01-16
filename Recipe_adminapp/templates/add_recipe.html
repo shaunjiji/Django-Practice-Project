@@ -9,12 +9,13 @@
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
     </head>
     <body>
-        <form action="{% url 'getData' %}" method="post"
+        <form action="{% url 'add_recipe' %}" method="post"
             enctype="multipart/form-data">
             {% csrf_token %}
-            Name : <input type="text" name="name"><br><br>
-            Age : <input type="" name="age"><br><br>
-            Image : <input type="file" name="image"><br><br>
+            Recipe Name : <input type="text" name="recipe_name"><br><br>
+            Recipe Image : <input type="file" name="recipe_image"><br><br>
+            Instructions : <input type="text" name="instructions"><br><br>
+            Ingredients : <input type="text" name="ingredients"><br><br>
             <input type="submit">
         </form>
     </body>
