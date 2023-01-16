@@ -8,10 +8,10 @@ from django.utils.datastructures import MultiValueDictKeyError
 # Create your views here.
 
 def index(request):
-    return render(request,"adminindex.html")
+    return render(request,'adminindex.html')
 
 def view_add_recipe(request):
-    return render(request, "add_recipe.html")
+    return render(request, 'add_recipe.html')
 
 def add_recipe(request):
     if request.method == 'POST':
@@ -21,4 +21,8 @@ def add_recipe(request):
         recipe_ingredients = request.POST['ingredients']
     data = Recipedb(recipe_name = name, recipe_image = image, instruction = recipe_instructions, ingredients = recipe_ingredients)
     data.save()
-    return redirect('view_add_recipe')
+    return redirect('view')
+
+def view(request):
+    data = Recipedb.objects.all()
+    return render(request, 'view_recipe.html', {'data': data})
