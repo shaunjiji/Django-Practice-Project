@@ -17,3 +17,4 @@ def send_message(request):
     data = Contactdb(name = user_name, email = user_email, subject = user_subject, message = user_message)
     data.save()
     return redirect('register')
+    
