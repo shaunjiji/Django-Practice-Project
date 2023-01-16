@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <form action="{% url 'getData' %}" method="post"
+            enctype="multipart/form-data">
+            {% csrf_token %}
+            Name : <input type="text" name="name"><br><br>
+            Age : <input type="" name="age"><br><br>
+            Image : <input type="file" name="image"><br><br>
+            <input type="submit">
+        </form>
+    </body>
+</html>
